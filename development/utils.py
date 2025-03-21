@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 def factorize(df: pd.DataFrame) -> pd.DataFrame:
     for column in df.columns:
         if df[column].dtype not in ["int64","float64"]:
@@ -33,3 +32,10 @@ def read_csv_file(file) -> pd.DataFrame:
         raise FileNotFoundError("Archivo no encontrado")
     except:
         raise ValueError("Error en la lectura del archivo")
+def write_csv_file(df: pd.DataFrame, nombre_archivo: str = None, ruta: str = None):
+    if nombre_archivo is None:
+        raise TypeError("Nombre de archivo no especificado")
+    if ruta is None:
+        df.to_csv(nombre_archivo, index = False)
+        return
+    df.to_csv(f"{ruta}/{nombre_archivo}")
