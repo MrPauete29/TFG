@@ -1,6 +1,6 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from typing import Tuple
+from sklearn.model_selection import train_test_split, GridSearchCV, RandomizedSearchCV
+from typing import Tuple, Any, Dict
 def factorize(df: pd.DataFrame) -> pd.DataFrame:
     for column in df.columns:
         if df[column].dtype not in ["int64","float64"]:
@@ -54,3 +54,17 @@ def train_test_validation_split(df: pd.DataFrame, target_column: str, test_size:
     X_test, X_validation, y_test, y_validation = train_test_split(X_temp, y_temp, test_size=validation_size_proportioned, random_state=19)
 
     return X_train, y_train, X_test, y_test, X_validation, y_validation
+def model_best_parameters(model: Any, scoring: str = "recall", param_distributions: Dict = None ):
+    random_search = RandomizedSearchCV(
+        estimator=model,
+        param_distributions=param_distributions,
+        n_iter=100,
+        cv=5,
+        scoring=scoring,
+        n_jobs=-1,
+        verbose=2,
+        random_state=42
+    )
+
+
+    return random_search

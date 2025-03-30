@@ -1,15 +1,22 @@
 import pandas as pd
 from sklearn.linear_model import LogisticRegression as lr
-from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report, make_scorer, recall_score, fbeta_score
 import joblib
+from development.utils import model_best_parameters
+from typing import Dict
+
+
 class LogisticRegression:
-    def __init__(self, **params):
-        self.model = lr(**params)
+    def __init__(self, pos_label):
+        self.pos_label = pos_label
+        self.model = lr()
         self.trained = False
 
-    def train(self, X_train: pd.DataFrame, y_train: pd.DataFrame):
+    def train(self, X_train: pd.DataFrame, y_train: pd.DataFrame, param_distributions: Dict ):
         self.trained = True
-        return self.model.fit(X_train, y_train)
+        scoring = make_scorer(recall_score, pos_label=self.pos_label)
+        self.model = model_best_parameters(self.model, scoring=scoring, param_distributions=param_distributions)
+        self.model.fit(X_train, y_train)
 
     def predict(self, X_val):
         if not self.trained:
@@ -21,7 +28,7 @@ class LogisticRegression:
             raise Exception("Model not trained")
         return self.model.predict_proba(X_val)[:,1]
 
-    def evaluate(self, X: pd.Dataframe = None, y: pd.DataFrame = None, y_pred: pd.DataFrame = None):
+    def evaluate(self, X: pd.DataFrame = None, y: pd.DataFrame = None, y_pred: pd.DataFrame = None):
         if not self.trained:
             raise Exception("Model not trained")
         if y is None:
