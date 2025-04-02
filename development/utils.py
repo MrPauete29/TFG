@@ -1,9 +1,13 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split, GridSearchCV, RandomizedSearchCV
-from typing import Tuple, Any, Dict
-def factorize(df: pd.DataFrame) -> pd.DataFrame:
-    for column in df.columns:
-        if df[column].dtype not in ["int64","float64"]:
+from typing import Tuple, Any, Dict, List
+def factorize(df: pd.DataFrame, columns: List = None) -> pd.DataFrame:
+    if columns is None:
+        for column in df.columns:
+            if df[column].dtype not in ["int64","float64"]:
+                df[column] = df[column].factorize()[0]
+    else:
+        for column in columns:
             df[column] = df[column].factorize()[0]
     return df
 
