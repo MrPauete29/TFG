@@ -8,5 +8,5 @@ file = "C:/Users/paumo/PycharmProjects/TFG/datasets/Stroke.csv"
 
 df = read_csv_file(file)
 
-df = clean(df)
-print(df)
+
+print(df["work_type"].unique())

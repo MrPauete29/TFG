@@ -5,10 +5,9 @@ from development.utils import model_best_parameters
 from typing import Dict
 import joblib
 
-class RandomForest:
-    def __init__(self, pos_label, beta):
+class XGBoost:
+    def __init__(self, pos_label):
         self.pos_label = pos_label
-        self.beta = beta
         self.model = xgb.XGBClassifier(random_state = 50)
         self.trained = False
 

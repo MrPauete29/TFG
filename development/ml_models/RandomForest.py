@@ -6,9 +6,8 @@ from development.utils import model_best_parameters
 from typing import Dict
 
 class RandomForest:
-    def __init__(self, pos_label, beta):
+    def __init__(self, pos_label):
         self.pos_label = pos_label
-        self.beta = beta
         self.model = RandomForestClassifier(random_state = 50)
         self.trained = False
 

@@ -29,14 +29,21 @@ def clean(df):
         "Fair": 2,
         "Poor": 1
     }
-    columns = ["Smoking","AlcoholDrinking", "Stroke", "DiffWalking", "Sex", "Race", "PhysicalActivity", "GenHealth", "Asthma", "KidneyDisease", "SkinCancer"]
+    map_yes_no = {
+        "Yes": 1,
+        "No": 0
+    }
+    columns = ["DiffWalking", "Sex", "Race", "Asthma", "KidneyDisease", "SkinCancer"]
     df = eliminate_column_na(df, 30)
     df = eliminate_row_na(df, 20)
     df["AgeCategory"] = df["AgeCategory"].map(map_edades)
     df["Diabetic"] = df["Diabetic"].map(map_diabetes)
     df["GenHealth"] = df["GenHealth"].map(map_genhealth)
+    df["Smoking"] = df["Smoking"].map(map_yes_no)
+    df["AlcoholDrinking"] = df["AlcoholDrinking"].map(map_yes_no)
+    df["HeartDisease"] = df["HeartDisease"].map(map_yes_no)
+    df["Stroke"] = df["Stroke"].map(map_yes_no)
     df = factorize(df, columns)
-
     return df
 
 
