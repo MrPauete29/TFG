@@ -1,4 +1,4 @@
-from development.utils import eliminate_row_na, eliminate_column_na, factorize
+from development.utils import factorize
 
 def clean(df):
     smoke_map = {
