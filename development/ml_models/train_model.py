@@ -1,6 +1,6 @@
-from development.ml_models.LogisticRegression import LogisticRegression
-from development.ml_models.RandomForest import RandomForest
-from development.ml_models.XGBoost import XGBoost
+from development.ml_models.models.LogisticRegression import LogisticRegression
+from development.ml_models.models.RandomForest import RandomForest
+from development.ml_models.models.XGBoost import XGBoost
 from development.utils import read_csv_file, train_test_validation_split, factorize
 from development.clean_datasets.Stroke.clean import clean as clean_stroke
 from development.clean_datasets.HeartDisease.clean import clean as clean_heart
@@ -9,8 +9,8 @@ from imblearn.over_sampling import SMOTE
 from typing import Dict
 
 
-file = "e"
-model = XGBoost
+file = "c"
+model = RandomForest
 if model == LogisticRegression:
     param_distributions = {
     'penalty': ['l1', 'l2', 'elasticnet', None],
