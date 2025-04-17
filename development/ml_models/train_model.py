@@ -76,4 +76,4 @@ def main(file, target_column, pos_label, model, clean, param_distributions: Dict
 
 if __name__ == "__main__":
     trained_model, X_test, X_validation, y_test, y_validation = main(file = file, target_column = target_column, pos_label = pos_label, model = model, clean = clean, param_distributions = param_distributions)
-    print(trained_model.evaluate(X_validation, y_validation))
+    trained_model.evaluate(X_validation, y_validation)
