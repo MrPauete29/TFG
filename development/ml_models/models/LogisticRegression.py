@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression as lr
 from sklearn.metrics import classification_report, make_scorer, recall_score, fbeta_score
 import joblib
-from development.utils import model_best_parameters
+from development.utils import model_best_parameters,create_visualize_confusion_matrix
 from typing import Dict
 
 
@@ -28,19 +28,20 @@ class LogisticRegression:
             raise Exception("Model not trained")
         return self.model.predict_proba(X_val)[:,1]
 
-    def evaluate(self, X: pd.DataFrame = None, y: pd.DataFrame = None, y_pred: pd.DataFrame = None):
+    def evaluate(self, X: pd.DataFrame = None, y_true: pd.DataFrame = None, y_pred: pd.DataFrame = None):
         if not self.trained:
             raise Exception("Model not trained")
-        if y is None:
+        if y_true is None:
             raise ValueError("y set must be provided")
         if y_pred is None:
             if X is None:
                 raise ValueError("y_pred set or X set must be provided")
             y_pred = self.predict(X)
-        return classification_report(y, y_pred)
+        create_visualize_confusion_matrix(y_true,y_pred)
+        return classification_report(y_true, y_pred)
 
     def save_model(self, filename: str):
-        joblib.dump(self.model,f"trained_models/random_forest/{filename}")
+        joblib.dump(self.model,f"trained_models/random_forest/{filename}.pkl")
 
     def load_model(self, filename: str):
-        self.model = joblib.load(f"trained_models/random_forest/{filename}")
+        self.model = joblib.load(f"trained_models/random_forest/{filename}.pkl")

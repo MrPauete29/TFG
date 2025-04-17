@@ -1,6 +1,11 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split, GridSearchCV, RandomizedSearchCV
 from typing import Tuple, Any, Dict, List
+from sklearn.metrics import confusion_matrix, classification_report
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+
 def factorize(df: pd.DataFrame, columns: List = None) -> pd.DataFrame:
     if columns is None:
         for column in df.columns:
@@ -72,3 +77,19 @@ def model_best_parameters(model: Any, scoring: str = "recall", param_distributio
 
 
     return random_search
+def create_visualize_confusion_matrix(y_true: Any, y_pred: Any) -> None:
+    cm = confusion_matrix(y_true,y_pred)
+    plt.figure(figsize=(6, 4))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+    plt.xlabel('Predicted')
+    plt.ylabel('Actual')
+    plt.title('Confusion Matrix')
+    plt.show()
+def create_visualize_classification_report(y_true: Any,y_pred: Any) -> None:
+    report_dict = classification_report(y_true, y_pred, output_dict=True)
+    df_report = pd.DataFrame(report_dict).transpose()
+    plt.figure(figsize=(8, 4))
+    sns.heatmap(df_report.iloc[:-3, :-1], annot=True, cmap='Blues')
+    plt.title('Classification Report Heatmap')
+    plt.show()
+

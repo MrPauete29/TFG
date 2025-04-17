@@ -33,7 +33,7 @@ def clean(df):
         "Yes": 1,
         "No": 0
     }
-    columns = ["DiffWalking", "Sex", "Race", "Asthma", "KidneyDisease", "SkinCancer"]
+    columns = ["Sex", "Race"]
     df = eliminate_column_na(df, 30)
     df = eliminate_row_na(df, 20)
     df["AgeCategory"] = df["AgeCategory"].map(map_edades)
@@ -43,6 +43,10 @@ def clean(df):
     df["AlcoholDrinking"] = df["AlcoholDrinking"].map(map_yes_no)
     df["HeartDisease"] = df["HeartDisease"].map(map_yes_no)
     df["Stroke"] = df["Stroke"].map(map_yes_no)
+    df["SkinCancer"] = df["SkinCancer"].map(map_yes_no)
+    df["KidneyDisease"] = df["KidneyDisease"].map(map_yes_no)
+    df["Asthma"] = df["Asthma"].map(map_yes_no)
+    df["DiffWalking"] = df["DiffWalking"].map(map_yes_no)
     df = factorize(df, columns)
     return df
 

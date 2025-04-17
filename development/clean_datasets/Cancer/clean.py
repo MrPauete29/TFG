@@ -1,11 +1,20 @@
-from development.utils import eliminate_row_na, eliminate_column_na
+import numpy as np
+
 
 def clean(df):
     map_diagnosis ={
         "M": 1,
         "B": 0
     }
-    df = eliminate_column_na(df, 30)
-    df = eliminate_row_na(df, 20)
+
+    columns_na= [
+        "concavity1", "concave_points1",
+        "concavity2", "concave_points2",
+        "concavity3", "concave_points3"
+    ]
+
+    df[columns_na] = df[columns_na].replace(0.0, np.nan)
+    df = df.dropna()
     df["Diagnosis"] = df["Diagnosis"].map(map_diagnosis)
+
     return df
