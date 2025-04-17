@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression as lr
 from sklearn.metrics import classification_report, make_scorer, recall_score, fbeta_score
 import joblib
-from development.utils import model_best_parameters,create_visualize_confusion_matrix
+from development.utils import model_best_parameters,create_visualize_confusion_matrix,create_visualize_classification_report
 from typing import Dict
 
 
@@ -37,8 +37,8 @@ class LogisticRegression:
             if X is None:
                 raise ValueError("y_pred set or X set must be provided")
             y_pred = self.predict(X)
-        create_visualize_confusion_matrix(y_true,y_pred)
-        return classification_report(y_true, y_pred)
+        create_visualize_confusion_matrix(y_true, y_pred)
+        create_visualize_classification_report(y_true, y_pred)
 
     def save_model(self, filename: str):
         joblib.dump(self.model,f"trained_models/random_forest/{filename}.pkl")
