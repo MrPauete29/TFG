@@ -64,6 +64,7 @@ def train_test_validation_split(df: pd.DataFrame, target_column: str, test_size:
 
     return X_train, y_train, X_test, y_test, X_validation, y_validation
 def model_best_parameters(model: Any, scoring: str = "recall", param_distributions: Dict = None ):
+    print(scoring)
     random_search = RandomizedSearchCV(
         estimator=model,
         param_distributions=param_distributions,
@@ -74,8 +75,6 @@ def model_best_parameters(model: Any, scoring: str = "recall", param_distributio
         verbose=2,
         random_state=42
     )
-
-
     return random_search
 def create_visualize_confusion_matrix(y_true: Any, y_pred: Any) -> None:
     cm = confusion_matrix(y_true,y_pred)
@@ -84,6 +83,7 @@ def create_visualize_confusion_matrix(y_true: Any, y_pred: Any) -> None:
     plt.xlabel('Predicted')
     plt.ylabel('Actual')
     plt.title('Confusion Matrix')
+    plt.savefig("matriz_confusion_1.png", dpi=300, bbox_inches='tight')
     plt.show()
 def create_visualize_classification_report(y_true: Any,y_pred: Any) -> None:
     report_dict = classification_report(y_true, y_pred, output_dict=True)
@@ -91,5 +91,7 @@ def create_visualize_classification_report(y_true: Any,y_pred: Any) -> None:
     plt.figure(figsize=(8, 4))
     sns.heatmap(df_report.iloc[:-3, :-1], annot=True, cmap='Blues')
     plt.title('Classification Report Heatmap')
+    plt.savefig("matriz_confusion_2.png", dpi=300, bbox_inches='tight')
     plt.show()
+
 

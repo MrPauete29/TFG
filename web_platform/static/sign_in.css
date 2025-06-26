@@ -1,0 +1,58 @@
+html,body {
+    font-family: Arial, sans-serif;
+    background-image: url("/static/imgs/live_well.jpeg");
+    background-size: cover;
+    background-position: 200% 200%;
+    background-repeat: no-repeat;
+    background-color: #a6a6a6;
+    text-align: center;
+    height: 100%;
+    overflow-x: hidden;
+    margin:0;
+    padding: 0;
+}
+
+.container {
+    margin-top: 0px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.main-image {
+    width: 40%;
+    max-width: 250px;
+    height: auto;
+    display: block;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.buttons {
+    position: fixed;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    padding: 18px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+
+.button:hover {
+    background-color: #333;
+}

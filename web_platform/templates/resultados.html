@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='formulario.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='resultado.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Resultado del análisis</h1>
+
+        {% if 'ALTO' in resultado %}
+            <div class="resultado alto">{{ resultado }}</div>
+        {% elif 'MODERADO' in resultado %}
+            <div class="resultado moderado">{{ resultado }}</div>
+        {% else %}
+            <div class="resultado bajo">{{ resultado }}</div>
+        {% endif %}
+
+        <br>
+        <a href="{{ volver_a }}" class="button-volver">Volver</a>
+    </div>
+</body>
+</html>

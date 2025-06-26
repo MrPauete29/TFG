@@ -15,8 +15,9 @@ class LogisticRegression:
     def train(self, X_train: pd.DataFrame, y_train: pd.DataFrame, param_distributions: Dict ):
         self.trained = True
         scoring = make_scorer(recall_score, pos_label=self.pos_label)
-        self.model = model_best_parameters(self.model, scoring=scoring, param_distributions=param_distributions)
+        self.model = model_best_parameters(self.model, scoring = scoring, param_distributions=param_distributions)
         self.model.fit(X_train, y_train)
+        self.model = self.model.best_estimator_
 
     def predict(self, X_val):
         if not self.trained:
@@ -26,7 +27,7 @@ class LogisticRegression:
     def predict_proba(self, X_val):
         if not self.trained:
             raise Exception("Model not trained")
-        return self.model.predict_proba(X_val)[:,1]
+        return self.model.predict_proba(X_val)
 
     def evaluate(self, X: pd.DataFrame = None, y_true: pd.DataFrame = None, y_pred: pd.DataFrame = None):
         if not self.trained:
@@ -36,9 +37,12 @@ class LogisticRegression:
         if y_pred is None:
             if X is None:
                 raise ValueError("y_pred set or X set must be provided")
-            y_pred = self.predict(X)
+            print("Prediciendo probabilidades...")
+            y_proba = self.predict_proba(X)[:, 1]
+            y_pred = (y_proba > 0.6).astype(int)
         create_visualize_confusion_matrix(y_true, y_pred)
         create_visualize_classification_report(y_true, y_pred)
+
 
     def save_model(self, filename: str):
         joblib.dump(self.model,f"trained_models/random_forest/{filename}.pkl")

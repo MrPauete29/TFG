@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),url("/static/imgs/healthy-background.webp");
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+}
+
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(8px);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    gap: 240px;
+    display: flex;
+}
+
+.sidebar h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 50px;
+    margin-bottom: 75px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #111;
+    font-size: 1.8rem;
+    padding: 12px 16px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 75px;
+}
+
+.sidebar a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+    color: #000;
+    font-weight: bold;
+}
