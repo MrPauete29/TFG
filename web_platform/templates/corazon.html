@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Datos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='formulario.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Introduce tus datos</h1>
+        <form action="/procesar_corazon" method="post">
+            <label>Edad:</label>
+            <input type="number" name="age" min = "1" max = "100" step = "1" required>
+
+            <label>Sexo:</label>
+            <select name="sexo" required>
+                <option value="male">Hombre</option>
+                <option value="female">Mujer</option>
+            </select>
+
+            <label>Altura (m):</label>
+            <input type="number" name="height" step = "0.01" required>
+
+            <label>Peso (kg):</label>
+            <input type="number" name="mass" step = "0.01" required>
+
+
+            <label>Dificultad al caminar</label>
+            <select name="DiffWalking">
+                <option value="No">No</option>
+                <option value="Yes">Sí</option>
+            </select>
+
+
+            <label>Diabético</label>
+            <select name="Diabetic">
+                <option value="0">No</option>
+                <option value="2">Sí</option>
+                <option value="1">No, pero al borde de tener</option>
+            </select>
+
+            <label>Fumador:</label>
+            <select name="fumador">
+                <option value="0">No fuma</option>
+                <option value="1">Fuma</option>
+            </select>
+
+            <label>¿Realiza actividad física regularmente?</label>
+            <select name="PhysicalActivity" required>
+                <option value="Yes">Sí</option>
+                <option value="No">No</option>
+            </select>
+
+            <label>¿Cómo calificaría su salud general?</label>
+            <select name="GenHealth" required>
+                <option value="Excellent">Excelente</option>
+                <option value="Very good">Muy buena</option>
+                <option value="Good">Buena</option>
+                <option value="Fair">Regular</option>
+                <option value="Poor">Mala</option>
+            </select>
+
+            <button type="submit">Procesar</button>
+        </form>
+        <a href="{{ url_for('menu_principal') }}" class="button-volver">Volver al menú principal</a>
+    </div>
+</body>
+</html>

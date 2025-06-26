@@ -1,0 +1,97 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #e6ecf3, #f8fbfe);
+    margin: 0;
+    padding: 0;
+    color: #2c3e50;
+}
+
+.tfg-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 40px 60px 40px;
+}
+
+.info-box {
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    text-align: center;
+}
+
+.header-img {
+    width: 150px;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 0px;
+}
+
+.info-datos {
+    text-align: left;
+    padding-left: 50px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-top: 10px;
+    color: #34495e;
+}
+
+.contenido-box {
+    flex: 2;
+    min-width: 300px;
+    max-width: 600px;
+}
+
+.contenido-box h1 {
+    font-size: 2rem;
+    color: #1a4f84;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.contenido-box h2 {
+    color: #1a4f84;
+    border-bottom: 2px solid #cce0f5;
+    padding-bottom: 5px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+    text-align: left;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+li {
+    margin: 6px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #2166c1;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #0d3c78;
+    text-decoration: underline;
+}
+
+.icono-pdf {
+    width: 18px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 6px;
+}

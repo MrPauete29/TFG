@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Datos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='formulario.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Introduce tus datos</h1>
+        <form action="/procesar_ictus" method="post">
+            <label>Edad:</label>
+            <input type="number" name="age" min = "0" max = "100" step = "1" required>
+
+            <label>Sexo:</label>
+            <select name="sexo" required>
+                <option value="male">Hombre</option>
+                <option value="female">Mujer</option>
+            </select>
+            <label>Hipertensión</label>
+            <select name="hipertension">
+                <option value="0">No</option>
+                <option value="1">Sí</option>
+            </select>
+            <label>Enfermedades del Corazón</label>
+            <select name="heart_disease">
+                <option value="0">No</option>
+                <option value="1">Sí</option>
+            </select>
+
+            <label>Nivel de Glucosa:</label>
+            <select name="glucose">
+                <option value="0">Baja</option>
+                <option value="1">Normal</option>
+                <option value="2">Alta</option>
+            </select>
+
+            <label>Altura (m):</label>
+            <input type="number" name="height" step = "0.01" max = "2.5" required>
+
+            <label>Peso (kg):</label>
+            <input type="number" name="mass" required>
+
+            <label>Fumador:</label>
+            <select name="fumador">
+                <option value="0">No ha fumado nunca</option>
+                <option value="2">Fuma actualmente</option>
+                <option value="1">Fumó en el pasado</option>
+            </select>
+            <button type="submit">Procesar</button>
+        </form>
+        <a href="{{ url_for('menu_principal') }}" class="button-volver">Volver al menú principal</a>
+
+    </div>
+</body>
+</html>
