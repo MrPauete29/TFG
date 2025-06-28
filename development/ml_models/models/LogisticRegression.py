@@ -45,7 +45,7 @@ class LogisticRegression:
 
 
     def save_model(self, filename: str):
-        joblib.dump(self.model,f"trained_models/random_forest/{filename}.pkl")
+        joblib.dump(self.model,f"trained_models/logistic_regression/{filename}.pkl")
 
     def load_model(self, filename: str):
-        self.model = joblib.load(f"trained_models/random_forest/{filename}.pkl")
+        self.model = joblib.load(f"trained_models/logistic_regression/{filename}.pkl")

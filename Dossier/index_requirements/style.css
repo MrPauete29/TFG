@@ -17,7 +17,7 @@ body {
     padding: 0 40px 60px 40px;
 }
 
-.info-box {
+.datos {
     flex: 1;
     min-width: 280px;
     max-width: 350px;
@@ -33,22 +33,22 @@ body {
     margin-bottom: 0px;
 }
 
-.info-datos {
+.informacion {
     text-align: left;
-    padding-left: 50px;
+    padding-left: 46px;
     font-size: 1.1rem;
     line-height: 1.8;
     margin-top: 10px;
     color: #34495e;
 }
 
-.contenido-box {
+.archivos {
     flex: 2;
     min-width: 300px;
     max-width: 600px;
 }
 
-.contenido-box h1 {
+.archivos h1 {
     font-size: 2rem;
     color: #1a4f84;
     margin-top: 40px;
@@ -56,7 +56,7 @@ body {
     text-align: left;
 }
 
-.contenido-box h2 {
+.archivos h2 {
     color: #1a4f84;
     border-bottom: 2px solid #cce0f5;
     padding-bottom: 5px;
@@ -89,7 +89,7 @@ a:hover {
     text-decoration: underline;
 }
 
-.icono-pdf {
+.icono {
     width: 18px;
     height: auto;
     vertical-align: middle;
