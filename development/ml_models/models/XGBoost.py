@@ -42,8 +42,8 @@ class XGBoost:
         create_visualize_classification_report(y_true, y_pred)
 
     def save_model(self, filename: str) -> None:
-        joblib.dump(self.model,f"trained_models/random_forest/{filename}.pkl")
+        joblib.dump(self.model,f"trained_models/xgboost/{filename}.pkl")
 
     def load_model(self, filename: str) -> None:
-        self.model = joblib.load(f"trained_models/random_forest/{filename}.pkl")
+        self.model = joblib.load(f"trained_models/xgboost/{filename}.pkl")
         self.trained = True
